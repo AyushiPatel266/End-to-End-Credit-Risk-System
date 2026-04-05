@@ -531,9 +531,9 @@ if predict_btn:
         plt.title('What drove this risk score?',
                   color=plot_text, fontsize=12,
               pad=12, loc='left', fontweight='bold')
-    plt.tight_layout(pad=1.5)
-    st.pyplot(fig, use_container_width=True)
-    plt.close()
+        plt.tight_layout(pad=1.5)
+        st.pyplot(fig, use_container_width=True)
+        plt.close()
 
 except Exception:
     st.info("SHAP explanation could not be generated for this input.")
