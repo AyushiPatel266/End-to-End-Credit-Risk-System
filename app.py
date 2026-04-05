@@ -328,14 +328,13 @@ def load_artifacts():
     scaler        = joblib.load('models/scaler.pkl')
     threshold     = joblib.load('models/threshold.pkl')
     feature_names = joblib.load('models/feature_names.pkl')
-    try:
-        explainer = joblib.load('models/shap_explainer.pkl')
-    except Exception:
-        explainer = None
-    return model, scaler, threshold, feature_names, explainer
+    return model, scaler, threshold, feature_names
 
-model, scaler, threshold, feature_names, explainer = load_artifacts()
+model, scaler, threshold, feature_names = load_artifacts()
 
+@st.cache_resource
+def load_explainer(_model, _X_sample):
+    return shap.Explainer(_model, _X_sample)
 
 # Header
 st.markdown(f"""
@@ -510,6 +509,9 @@ if predict_btn:
     st.caption("Red = pushed risk up · Blue = pushed risk down · Longer bar = bigger impact")
 
     try:
+        import pandas as pd
+        X_sample = pd.DataFrame([feature_names]).iloc[0:1]
+        explainer = load_explainer(model, input_data)
         shap_values_single = explainer(input_data, check_additivity=False)
 
         fig, ax = plt.subplots(figsize=(13, 5))
