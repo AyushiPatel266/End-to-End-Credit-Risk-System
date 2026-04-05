@@ -10,4 +10,3 @@ uvicorn
 joblib
 matplotlib
 seaborn
-numba==0.60.0
