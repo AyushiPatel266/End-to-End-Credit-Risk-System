@@ -320,7 +320,6 @@ hr {{ border-color: {divider} !important; margin: 1rem 0 !important; }}
 </style>
 """, unsafe_allow_html=True)
 
-
 # Load artifacts
 @st.cache_resource
 def load_artifacts():
@@ -333,8 +332,8 @@ def load_artifacts():
 model, scaler, threshold, feature_names = load_artifacts()
 
 @st.cache_resource
-def load_explainer(_model, _X_sample):
-    return shap.Explainer(_model, _X_sample)
+def load_explainer(_model):
+    return shap.TreeExplainer(_model)
 
 # Header
 st.markdown(f"""
@@ -410,7 +409,6 @@ predict_btn = st.button(
     "Run Credit Risk Assessment",
     use_container_width=True
 )
-
 
 # Results
 if predict_btn:
@@ -509,10 +507,8 @@ if predict_btn:
     st.caption("Red = pushed risk up · Blue = pushed risk down · Longer bar = bigger impact")
 
     try:
-        import pandas as pd
-        X_sample = pd.DataFrame([feature_names]).iloc[0:1]
-        explainer = load_explainer(model, input_data)
-        shap_values_single = explainer(input_data, check_additivity=False)
+        tree_explainer = load_explainer(model)
+        shap_values_single = tree_explainer(input_data, check_additivity=False)
 
         fig, ax = plt.subplots(figsize=(13, 5))
         fig.patch.set_facecolor(plot_bg)
@@ -528,23 +524,19 @@ if predict_btn:
         ax.tick_params(colors=plot_text, labelsize=10)
         for spine in ax.spines.values():
             spine.set_edgecolor(spine_color)
-        for line in ax.get_lines():
-            col_val = line.get_color()
-            if col_val in ['black', '#000000'] or col_val == (0, 0, 0, 1):
-                line.set_color(plot_text)
 
         ax.xaxis.label.set_color(plot_text)
         ax.yaxis.label.set_color(plot_text)
 
         plt.title('What drove this risk score?',
                   color=plot_text, fontsize=12,
-                  pad=12, loc='left', fontweight='bold')
-        plt.tight_layout(pad=1.5)
-        st.pyplot(fig, use_container_width=True)
-        plt.close()
+              pad=12, loc='left', fontweight='bold')
+    plt.tight_layout(pad=1.5)
+    st.pyplot(fig, use_container_width=True)
+    plt.close()
 
-    except Exception:
-        st.info("SHAP explanation could not be generated for this input.")
+except Exception:
+    st.info("SHAP explanation could not be generated for this input.")
 
 
 # Footer
