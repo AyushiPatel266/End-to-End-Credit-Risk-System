@@ -535,8 +535,8 @@ if predict_btn:
         st.pyplot(fig, use_container_width=True)
         plt.close()
 
-except Exception:
-    st.info("SHAP explanation could not be generated for this input.")
+    except Exception:
+        st.info("SHAP explanation could not be generated for this input.")
 
 
 # Footer
