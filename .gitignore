@@ -3,7 +3,6 @@ data/processed/
 __pycache__/ 
 .ipynb_checkpoints/ 
 mlruns/ 
-models/ 
 notebooks/mlruns/ 
 notebooks/mlflow.db 
 notebooks/.ipynb_checkpoints/ 

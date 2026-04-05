@@ -4,9 +4,10 @@ numpy
 scikit-learn
 xgboost==2.0.3
 imbalanced-learn
-shap
+shap==0.49.1
 fastapi
 uvicorn
 joblib
 matplotlib
 seaborn
+numba==0.60.0

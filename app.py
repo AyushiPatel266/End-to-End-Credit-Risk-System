@@ -328,7 +328,10 @@ def load_artifacts():
     scaler        = joblib.load('models/scaler.pkl')
     threshold     = joblib.load('models/threshold.pkl')
     feature_names = joblib.load('models/feature_names.pkl')
-    explainer     = joblib.load('models/shap_explainer.pkl')
+    try:
+        explainer = joblib.load('models/shap_explainer.pkl')
+    except Exception:
+        explainer = None
     return model, scaler, threshold, feature_names, explainer
 
 model, scaler, threshold, feature_names, explainer = load_artifacts()
