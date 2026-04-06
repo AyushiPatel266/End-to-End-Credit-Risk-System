@@ -5,7 +5,7 @@
 ![Streamlit](https://img.shields.io/badge/Streamlit-Live-red)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
-A production-ready machine learning system that predicts the probability of a loan applicant defaulting within 2 years. Built with a focus on real-world ML practices — class imbalance handling, experiment tracking, model explainability, and live deployment.
+A production-ready machine learning system that predicts the probability of a loan applicant defaulting within 2 years. Built with a focus on real-world ML practices, class imbalance handling, experiment tracking, model explainability, and live deployment.
 
 **Live Demo:** [end-to-end-credit-risk-system.streamlit.app](https://end-to-end-credit-risk-system.streamlit.app)
 
