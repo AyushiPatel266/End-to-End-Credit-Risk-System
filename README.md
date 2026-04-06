@@ -53,6 +53,7 @@ Given an applicant's financial profile, the model returns:
 ---
 
 ## Project Structure
+```
 End-to-End-Credit-Risk-System/
 ├── data/
 │   ├── Data Dictionary.xls
@@ -70,6 +71,7 @@ End-to-End-Credit-Risk-System/
 ├── api.py
 ├── requirements.txt
 └── README.md
+```
 
 ---
 
