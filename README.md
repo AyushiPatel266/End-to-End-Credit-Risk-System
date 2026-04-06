@@ -41,7 +41,7 @@ Given an applicant's financial profile, the model returns:
 
 ## Dataset
 
-**Give Me Some Credit** — Kaggle Competition Dataset
+**Give Me Some Credit** - Kaggle Competition Dataset
 
 - 150,000 real loan applicant records
 - 10 financial features
@@ -112,10 +112,10 @@ End-to-End-Credit-Risk-System/
 
 | Metric | What it means in business terms |
 |--------|--------------------------------|
-| False Negative | Approved a bad loan — bank absorbs the loss |
-| False Positive | Rejected a good customer — lost revenue |
+| False Negative | Approved a bad loan - bank absorbs the loss |
+| False Positive | Rejected a good customer - lost revenue |
 | Threshold tuning | Optimized the decision boundary for business cost |
-| SHAP | Explains each decision — required by financial regulators |
+| SHAP | Explains each decision - required by financial regulators |
 
 ---
 
@@ -170,10 +170,10 @@ curl -X POST "http://localhost:8000/predict" \
 
 ## Key Learnings
 
-- Class imbalance is one of the most common real-world ML challenges — SMOTE helped balance the training data without touching the test set
-- Accuracy is a misleading metric for imbalanced datasets — ROC-AUC and threshold tuning matter more
+- Class imbalance is one of the most common real-world ML challenges. SMOTE helped balance the training data without touching the test set
+- Accuracy is a misleading metric for imbalanced datasets; ROC-AUC and threshold tuning matter more
 - A deployed model with explainability is worth more than a perfect model in a notebook
-- Regulators require loan decisions to be explainable — SHAP provides that at the individual prediction level
+- Regulators require loan decisions to be explainable, SHAP provides that at the individual prediction level
 
 ---
 
